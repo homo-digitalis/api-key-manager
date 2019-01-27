@@ -1,16 +1,19 @@
+import { ISender } from "./sender"
+
 const uniqid: any = require("uniqid")
 
 export interface IAPIKeyManager {
     generateNewAPIKey(): string
-    sendAPIKeyToRequestor(address: string): void
+    sendAPIKeyToRequestor(address: string, message: any): void
 }
+
 export class ApiKeyManager implements IAPIKeyManager {
 
     private static instance: ApiKeyManager | undefined
 
-    public static getInstance(): ApiKeyManager {
+    public static getInstance(sender: ISender): ApiKeyManager {
         if (ApiKeyManager.instance === undefined) {
-            ApiKeyManager.instance = new ApiKeyManager()
+            ApiKeyManager.instance = new ApiKeyManager(sender)
         }
 
         return ApiKeyManager.instance
@@ -18,7 +21,7 @@ export class ApiKeyManager implements IAPIKeyManager {
 
     private data: string
 
-    private constructor() {
+    private constructor(private readonly sender: ISender) {
         this.data = ""
     }
 
@@ -29,8 +32,8 @@ export class ApiKeyManager implements IAPIKeyManager {
     }
 
     // tslint:disable-next-line:prefer-function-over-method
-    public sendAPIKeyToRequestor(address: string): void {
-        // tbd
+    public sendAPIKeyToRequestor(address: string, message: any): void {
+        this.sender.send(address, message)
     }
 
 }

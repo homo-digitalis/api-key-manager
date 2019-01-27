@@ -1,26 +1,25 @@
 import { ApiKeyManager } from "./api-key-manager"
-
-let apiKeyManager: ApiKeyManager
+import { TelegramMessageSender } from "./sender"
 
 describe("ApiKeyManager", () => {
-    beforeEach(async () => {
-        apiKeyManager = ApiKeyManager.getInstance()
-    })
 
     it("should generate new API Key", async () => {
+        const apiKeyManager: ApiKeyManager = ApiKeyManager.getInstance(new TelegramMessageSender())
+
         const apiKey: string = apiKeyManager.generateNewAPIKey()
         expect(apiKey)
             .toBeDefined()
     })
 
     it("should count calls", async () => {
-        // const apiKey: string = apiKeyManager.generateNewAPIKey()
-        // expect(apiKey)
-        //     .toBeDefined()
+        // work in progress
     })
 
     it("sends API Key to Requestor", async () => {
-        apiKeyManager.sendAPIKeyToRequestor("")
+        const apiKeyManager: ApiKeyManager = ApiKeyManager.getInstance(new TelegramMessageSender())
+
+        // work in progress
+        apiKeyManager.sendAPIKeyToRequestor("", "")
     })
 
 })

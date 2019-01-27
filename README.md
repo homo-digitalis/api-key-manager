@@ -3,7 +3,7 @@ As simple as it gets
 
 
 ## Basic Usage
-Please check the executable specifications / documentation - aka unit tests - here.
+Please check the executable specifications / documentation - aka unit tests - [here](https://github.com/homo-digitalis/api-key-manager/blob/master/src/api-key-manager.spec.ts).
 
 
 ## Feedback
