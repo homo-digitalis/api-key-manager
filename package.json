@@ -1,5 +1,5 @@
 {
-  "name": "api-key-manager",
+  "name": "@homo-digitalis/api-key-manager",
   "version": "0.1.0",
   "description": "As simple as it gets",
   "main": "./dist/index.js",
@@ -8,17 +8,18 @@
     "test": "jest",
     "test:cov": "jest --coverage",
     "tslint": "tslint -p ./",
-    "bp": "tsc && npm publish"
+    "bp": "npm run tslint && rm -rf ./dist && rm -rf ./node_modules && npm i --save && tsc && npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/monique-schlaumann/api-key-manager"
+    "url": "https://github.com/homo-digitalis/api-key-manager"
   },
   "keywords": [
-    "API Key Manager"
+    "API Key Manager",
+    "Web Development Education"
   ],
-  "author": "Monique Schlaumann",
-  "license": "MIT",
+  "author": "homo-digitalis@gmx.de",
+  "license": "GNU GPL",
   "husky": {
     "hooks": {
       "pre-commit": "npm run tslint && npm run test:cov"
